@@ -1,0 +1,78 @@
+{
+  "name": "@niraj/image-dominant-hover",
+  "version": "1.0.0",
+  "description": "React component that replicates YouTube's thumbnail hover effect with dominant color extraction",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build:lib": "vite build",
+    "build:demo": "vite build --config vite.demo.config.ts",
+    "build": "npm run build:lib && npm run build:demo",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run test && npm run build:lib"
+  },
+  "keywords": [
+    "react",
+    "image",
+    "hover",
+    "dominant-color",
+    "color-extraction",
+    "youtube-effect",
+    "thumbnail"
+  ],
+  "author": "Niraj Rajput <nirajrajput.dev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nirajrajput-dev/image-dominant-hover.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nirajrajput-dev/image-dominant-hover/issues"
+  },
+  "homepage": "https://github.com/nirajrajput-dev/image-dominant-hover#readme",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.0.4",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "happy-dom": "^12.10.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.6.4",
+    "vitest": "^1.0.4"
+  },
+  "dependencies": {}
+}
