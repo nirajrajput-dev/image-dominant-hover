@@ -1,5 +1,5 @@
 {
-  "name": "@niraj/image-dominant-hover",
+  "name": "@nirajrajput-dev/image-dominant-hover",
   "version": "1.0.0",
   "description": "React component that replicates YouTube's thumbnail hover effect with dominant color extraction",
   "main": "dist/index.js",
