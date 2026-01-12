@@ -245,9 +245,9 @@ MIT © [Niraj Rajput](https://github.com/nirajrajput-dev)
 
 ## 🔗 Links
 
-- [Demo](https://image-dominant-hover.vercel.app) (Coming soon)
+- [Live Demo](https://image-dominant-hover.vercel.app)
 - [GitHub Repository](https://github.com/nirajrajput-dev/image-dominant-hover)
-- [npm Package](https://www.npmjs.com/package/@niraj/image-dominant-hover)
+- [npm Package](https://www.npmjs.com/package/@nirajrajput-dev/image-dominant-hover)
 - [Report Issues](https://github.com/nirajrajput-dev/image-dominant-hover/issues)
 
 ## 🙏 Acknowledgments
