@@ -289,7 +289,7 @@ describe('colorExtractor', () => {
         }),
       } as unknown as CanvasRenderingContext2D;
 
-      (mockCanvas.getContext as any).mockReturnValue(mockContext);
+      (mockCanvas.getContext as unknown as ReturnType<typeof vi.fn>).mockReturnValue(mockContext);
 
       vi.spyOn(document, 'createElement').mockImplementation((tagName: string) => {
         if (tagName === 'canvas') {
@@ -315,7 +315,7 @@ describe('colorExtractor', () => {
             }
           }, 0);
         }
-      } as any;
+      } as unknown as typeof Image;
     });
 
     afterEach(() => {
