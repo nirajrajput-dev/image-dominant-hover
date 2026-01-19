@@ -89,7 +89,7 @@ function App() {
               height={200}
               transitionDuration={300}
               onClick={() => handleCardClick(image.title)}
-              onColorExtracted={(color) => {
+              onColorExtracted={(color: RGBColor) => {
                 setSelectedColor(color);
                 handleColorExtracted(color, image.title);
               }}

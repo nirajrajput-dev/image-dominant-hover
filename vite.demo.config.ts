@@ -11,7 +11,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@niraj/image-dominant-hover': resolve(__dirname, 'src/lib/index.ts'),
+      '@nirajrajput-dev/image-dominant-hover': resolve(__dirname, 'src/lib/index.ts'),
     },
   },
 });
