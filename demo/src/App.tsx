@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ImageCard, type RGBColor, rgbToString, calculateBrightness } from '@nirajrajput-dev/image-dominant-hover';
+import { ImageCard, type RGBColor, rgbToString, calculateBrightness } from '../../src/lib/index';
 import './App.css';
 
 // Sample images from Unsplash (public domain)
