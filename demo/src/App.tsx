@@ -23,8 +23,33 @@ const cards = [
   },
 ];
 
+// Helper function to dim the dominant color (reduce saturation and brightness)
+function dimColor(color: RGBColor, factor: number = 0.4): string {
+  const r = Math.round(color.r * factor);
+  const g = Math.round(color.g * factor);
+  const b = Math.round(color.b * factor);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+// Helper function to mix dominant color subtly with base colors
+function mixColorWithBase(dominantColor: RGBColor, baseHex: string, mixRatio: number = 0.15): string {
+  // Parse base color hex
+  const baseR = parseInt(baseHex.slice(1, 3), 16);
+  const baseG = parseInt(baseHex.slice(3, 5), 16);
+  const baseB = parseInt(baseHex.slice(5, 7), 16);
+  
+  // Mix colors (subtle blend)
+  const r = Math.round(baseR * (1 - mixRatio) + dominantColor.r * mixRatio);
+  const g = Math.round(baseG * (1 - mixRatio) + dominantColor.g * mixRatio);
+  const b = Math.round(baseB * (1 - mixRatio) + dominantColor.b * mixRatio);
+  
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
 function App() {
   const [showCopied, setShowCopied] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [cardColors, setCardColors] = useState<Record<number, RGBColor>>({});
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -32,9 +57,8 @@ function App() {
     setTimeout(() => setShowCopied(false), 2000);
   };
 
-  const handleColorExtracted = (color: RGBColor) => {
-    // Keep existing logic for color extraction
-    console.log('Color extracted:', color);
+  const handleColorExtracted = (color: RGBColor, index: number) => {
+    setCardColors((prev) => ({ ...prev, [index]: color }));
   };
 
   return (
@@ -83,20 +107,43 @@ function App() {
       <section className="cards-section">
         <div className="container">
           <div className="cards-grid">
-            {cards.map((card, index) => (
-              <ImageCard
-                key={index}
-                src={card.src}
-                alt={card.alt}
-                title={card.title}
-                description={card.description}
-                width={360}
-                height={240}
-                transitionDuration={300}
-                onColorExtracted={handleColorExtracted}
-                className="demo-card"
-              />
-            ))}
+            {cards.map((card, index) => {
+              const dominantColor = cardColors[index];
+              const isHovered = hoveredCard === index;
+              
+              // Only apply color effects when hovering AND color is extracted
+              const shouldApplyEffect = isHovered && dominantColor;
+              
+              return (
+                <div
+                  key={index}
+                  className="card-wrapper"
+                  onMouseEnter={() => setHoveredCard(index)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  style={{
+                    '--dominant-bg': shouldApplyEffect ? dimColor(dominantColor, 0.4) : 'transparent',
+                    '--title-color': shouldApplyEffect
+                      ? mixColorWithBase(dominantColor, '#fdfdfd', 0.15)
+                      : '#fdfdfd',
+                    '--desc-color': shouldApplyEffect
+                      ? mixColorWithBase(dominantColor, '#a5a4b2', 0.12)
+                      : '#a5a4b2',
+                  } as React.CSSProperties}
+                >
+                  <ImageCard
+                    src={card.src}
+                    alt={card.alt}
+                    title={card.title}
+                    description={card.description}
+                    width={360}
+                    height={240}
+                    transitionDuration={300}
+                    onColorExtracted={(color: RGBColor) => handleColorExtracted(color, index)}
+                    className="demo-card"
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

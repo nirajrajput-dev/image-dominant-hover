@@ -95,7 +95,7 @@ body {
 
 /* Landing Section - Perfectly centered */
 .landing {
-  /* min-height: 60vh; */
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,12 +144,19 @@ body {
   margin-inline: auto;
 }
 
-/* Card Styles - Hover effect now visible! */
+/* Card Wrapper with CSS Variables */
+.card-wrapper {
+  --dominant-bg: transparent;
+  --title-color: #fdfdfd;
+  --desc-color: #a5a4b2;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Card Styles - Hover effect with dimmed background */
 .demo-card {
-  /* Removed: background-color: transparent !important; */
-  /* This was preventing the hover effect from showing */
   padding: 1rem !important;
   border-radius: 1rem !important;
+  background-color: var(--dominant-bg) !important;
   transition: background-color 0.3s ease-in-out !important;
   cursor: default !important;
   border: none !important;
@@ -166,19 +173,21 @@ body {
 }
 
 .demo-card h3 {
-  color: #fdfdfd !important;
+  color: var(--title-color) !important;
   font-weight: 700 !important;
   font-size: 1.25rem !important;
   margin-block-start: 1rem !important;
   margin-block-end: 0.5rem !important;
   line-height: 1.3 !important;
+  transition: color 0.3s ease-in-out !important;
 }
 
 .demo-card p {
-  color: #a5a4b2 !important;
+  color: var(--desc-color) !important;
   font-size: 1rem !important;
   line-height: 1.5 !important;
   margin: 0 !important;
+  transition: color 0.3s ease-in-out !important;
 }
 
 /* Footer */
